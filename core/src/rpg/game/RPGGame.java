@@ -9,12 +9,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class RPGGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Hero hero;
+	private Pangolin pangolin;
 	private Texture textureGrass;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		hero = new Hero();
+		pangolin = new Pangolin();
 		textureGrass = new Texture("grass.png");
 	}
 
@@ -30,11 +32,13 @@ public class RPGGame extends ApplicationAdapter {
 				batch.draw(textureGrass,j*80,i*80);
 			}
 		}
+		pangolin.render(batch);
 		hero.render(batch);
 		batch.end();
 	}
 
-	public void update(float dt){
+	public void update(float dt) {
+		pangolin.update(dt);
 		hero.update(dt);
 	}
 	
